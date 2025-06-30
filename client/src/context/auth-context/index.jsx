@@ -12,13 +12,14 @@ export default function AuthProvider({ children }) {
     authenticate: false,
     user: null,
   });
+  
   const [loading, setLoading] = useState(true);
 
-  // async function handleRegisterUser(event, navigate) {
-  //   event.preventDefault();
-  //   const data = await registerService(signUpFormData);
+  async function handleRegisterUser(event, navigate) {
+    event.preventDefault();
+    const data = await registerService(signUpFormData);
     
-  // }
+  }
 
   async function handleRegisterUser(event, setActiveTab) {
   event.preventDefault();

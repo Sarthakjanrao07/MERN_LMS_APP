@@ -17,6 +17,10 @@ import StudentViewCourseProgressPage from "./pages/student/course-progress";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+import LandingPage from "./pages/LandingPage/LandingPage";
+
+
+
 
 function App() {
   const { auth } = useContext(AuthContext);
@@ -24,6 +28,7 @@ function App() {
   return (
     <>
     <Routes>
+      <Route path="/" element={<LandingPage />} />
       <Route
         path="/auth"
         element={
@@ -33,7 +38,9 @@ function App() {
             user={auth?.user}
           />
         }
+
       />
+
       <Route
         path="/instructor"
         element={

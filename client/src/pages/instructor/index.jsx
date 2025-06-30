@@ -5,7 +5,7 @@ import { Tabs, TabsContent } from "@/components/ui/tabs";
 import { AuthContext } from "@/context/auth-context";
 import { InstructorContext } from "@/context/instructor-context";
 import { fetchInstructorCourseListService } from "@/services";
-import { BarChart, Book, LogOut } from "lucide-react";
+import { BarChart, Book, LogOut, Menu} from "lucide-react";
 import { useContext, useEffect, useState } from "react";
 
 function InstructorDashboardpage() {
@@ -13,6 +13,9 @@ function InstructorDashboardpage() {
   const { resetCredentials } = useContext(AuthContext);
   const { instructorCoursesList, setInstructorCoursesList } =
     useContext(InstructorContext);
+
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false); // For mobile sidebar toggle
+
 
   async function fetchAllCourses() {
     const response = await fetchInstructorCourseListService();
@@ -53,9 +56,21 @@ function InstructorDashboardpage() {
 
   return (
     <div className="flex h-full min-h-screen bg-gray-100">
-      <aside className="w-64 bg-white shadow-md hidden md:block">
+
+      {/* Mobile Hamburger Button */}
+      <div className="md:hidden absolute top-1 left-4 z-50">
+        <Button variant="ghost" onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
+          <Menu className="h-6 w-6" />
+        </Button>
+      </div>
+
+      <aside
+        className={`bg-white shadow-md fixed md:static top-0 left-0 z-40 transform transition-transform duration-300 ease-in-out
+          ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} 
+          w-full md:w-64 h-full md:h-screen md:translate-x-0`}
+      >
         <div className="p-4">
-          <h2 className="text-2xl font-bold mb-4">Instructor View</h2>
+          <h2 className="text-2xl font-bold mb-4 ml-16 md:ml-0">Instructor View</h2>
           <nav>
             {menuItems.map((menuItem) => (
               <Button
@@ -75,6 +90,7 @@ function InstructorDashboardpage() {
           </nav>
         </div>
       </aside>
+
       <main className="flex-1 p-8 overflow-y-auto">
         <div className="max-w-7xl mx-auto">
           <h1 className="text-3xl font-bold mb-8">Dashboard</h1>

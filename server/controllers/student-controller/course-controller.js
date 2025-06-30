@@ -118,6 +118,21 @@ const checkCoursePurchaseInfo = async (req, res) => {
   }
 };
 
+const getAllPublicCoursesForLanding = async (req, res) => {
+  try {
+    const courses = await Course.find({ visibility: "public" })
+      .sort({ createdAt: -1 }) // or any custom logic
+      .limit(10); // only latest 10 public courses
+
+    res.status(200).json({ success: true, data: courses });
+  } catch (error) {
+    console.error("Error fetching public courses:", error);
+    res.status(500).json({ success: false, message: "Failed to fetch public courses" });
+  }
+};
+
+
+
 // const checkCoursePurchaseInfo = async (req, res) => {
 //   try {
 //     const { id, studentId } = req.params;
@@ -144,4 +159,5 @@ module.exports = {
   getAllStudentViewCourses,
   getStudentViewCourseDetails,
   checkCoursePurchaseInfo,
+  getAllPublicCoursesForLanding, // ✅ must be included
 };

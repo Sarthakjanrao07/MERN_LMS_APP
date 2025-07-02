@@ -13,8 +13,12 @@ function LandingPage() {
 useEffect(() => {
   const fetchCourses = async () => {
     try {
+<<<<<<< HEAD
       const response = await axios.get("http://localhost:5000/student/public-course/public/landing");
       // const response = await axios.get("https://mern-lms-app-backend.onrender.com/student/public-course/public/landing");
+=======
+      const response = await axios.get("https://mern-lms-app-backend.onrender.com/student/public-course/public/landing");
+>>>>>>> 7a6b60a3135a155145adbe5119928c3ccecdb25d
       console.log("Fetched courses:", response.data.data); // 👈 Add this
       setPublicCourses(response.data.data || []);
     } catch (error) {

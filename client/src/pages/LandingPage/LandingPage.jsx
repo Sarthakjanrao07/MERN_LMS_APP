@@ -41,7 +41,7 @@ function LandingPage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex items-center">
-              <Link to="/" className="text-2xl font-bold text-blue-600">Code LMS APP</Link>
+              <Link to="/" className="text-2xl font-bold text-blue-600">LMS APP</Link>
             </div>
             <div className="flex items-center space-x-4">
               <Link to="/courses" className="text-gray-700 hover:text-blue-600">Courses</Link>

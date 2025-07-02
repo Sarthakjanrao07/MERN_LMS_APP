@@ -43,8 +43,8 @@ useEffect(() => {
               <Link to="/" className="text-2xl font-bold text-blue-600">LMS App</Link>
             </div>
             <div className="flex items-center space-x-4">
-              <Link to="/student/courses" className="text-gray-700 hover:text-blue-600">Courses</Link>
-              <Link to="/about" className="text-gray-700 hover:text-blue-600">About</Link>
+              {/* <Link to="/student/courses" className="text-gray-700 hover:text-blue-600">Courses</Link> */}
+              {/* <Link to="/about" className="text-gray-700 hover:text-blue-600">About</Link> */}
               <Link to="/contact" className="text-gray-700 hover:text-blue-600">Contact</Link>
               <Button
                 onClick={() => navigate('/auth')}

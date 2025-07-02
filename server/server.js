@@ -28,7 +28,6 @@ app.use(
 
 
 app.use(express.json());
-
 //database connection
 mongoose
   .connect(MONGO_URI)

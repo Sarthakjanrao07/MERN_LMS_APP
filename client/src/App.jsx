@@ -18,6 +18,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import LandingPage from "./pages/LandingPage/LandingPage";
+import ContactPage from "./pages/ContactPage/ContactPage";
 
 
 
@@ -29,6 +30,9 @@ function App() {
     <>
     <Routes>
       <Route path="/" element={<LandingPage />} />
+<Route path="/contact" element={<ContactPage />} />
+
+
       <Route
         path="/auth"
         element={

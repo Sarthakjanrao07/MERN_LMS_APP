@@ -1,4 +1,9 @@
 require("dotenv").config();
+
+const path = require("path");
+const compression = require("compression");
+
+
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
@@ -51,6 +56,17 @@ app.use((err, req, res, next) => {
     success: false,
     message: "Something went wrong",
   });
+});
+
+
+// Enable gzip compression for faster loading
+app.use(compression());
+
+// Serve static React frontend
+app.use(express.static(path.join(__dirname, "build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
 app.listen(PORT, () => {

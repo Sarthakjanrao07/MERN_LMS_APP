@@ -62,12 +62,13 @@ app.use((err, req, res, next) => {
 // Enable gzip compression for faster loading
 app.use(compression());
 
-// Serve static React frontend
-app.use(express.static(path.join(__dirname, "build")));
+// Serve React frontend from client/build
+app.use(express.static(path.join(__dirname, "client/build")));
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
+  res.sendFile(path.join(__dirname, "client/build", "index.html"));
 });
+
 
 app.listen(PORT, () => {
   console.log(`Server is now running on port ${PORT}`);

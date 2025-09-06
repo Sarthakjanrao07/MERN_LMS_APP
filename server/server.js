@@ -33,6 +33,7 @@ app.use(
 
 
 app.use(express.json());
+app.use(compression());
 //database connection
 mongoose
   .connect(MONGO_URI)
@@ -59,15 +60,14 @@ app.use((err, req, res, next) => {
 });
 
 
-// Enable gzip compression for faster loading
-app.use(compression());
 
-// Serve React frontend from client/build
-app.use(express.static(path.join(__dirname, "client/build")));
+// Serve static files from React
+app.use(express.static(path.join(__dirname, "client", "dist")));
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client/build", "index.html"));
+  res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
 });
+
 
 
 app.listen(PORT, () => {

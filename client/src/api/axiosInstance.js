@@ -1,19 +1,39 @@
+// import axios from "axios";
+
+// const axiosInstance = axios.create({
+//   baseURL: "http://localhost:5000",
+//   // baseURL: "https://mern-lms-app-backend.onrender.com",
+// });
+
+// axiosInstance.interceptors.request.use(
+//   (config) => {
+//     const accessToken = JSON.parse(sessionStorage.getItem("accessToken")) || "";
+
+//     if (accessToken) {
+//       config.headers.Authorization = `Bearer ${accessToken}`;
+//     }
+
+//     return config;
+//   },
+//   (err) => Promise.reject(err)
+// );
+
+// export default axiosInstance;
+
+
 import axios from "axios";
 
-// Axios instance
 const axiosInstance = axios.create({
   baseURL: "http://localhost:5000",
   // baseURL: "https://mern-lms-app-backend.onrender.com",
 });
 
-// Request interceptor: attach token if exists
 axiosInstance.interceptors.request.use(
   (config) => {
-    // Public endpoints that don't need token
+    // Skip token for specific public routes
     const publicEndpoints = [
-      "/auth/login",
-      "/auth/register",
       "/student/course/public/landing",
+      // Add more public routes here if needed
     ];
 
     const isPublic = publicEndpoints.some((endpoint) =>
@@ -21,36 +41,16 @@ axiosInstance.interceptors.request.use(
     );
 
     if (!isPublic) {
-      const accessToken =
-        JSON.parse(sessionStorage.getItem("accessToken")) ||
-        JSON.parse(localStorage.getItem("accessToken"));
-
+      const accessToken = JSON.parse(sessionStorage.getItem("accessToken")) || "";
       if (accessToken) {
         config.headers.Authorization = `Bearer ${accessToken}`;
-      } else {
-        console.warn(`[Axios] No access token for request to ${config.url}`);
       }
     }
 
     return config;
   },
-  (error) => Promise.reject(error)
-);
-
-// Response interceptor: log 401 errors
-axiosInstance.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    if (error.response && error.response.status === 401) {
-      console.error(
-        `[Axios] 401 Unauthorized: ${error.config.url}`,
-        error.response.data
-      );
-      // Optional: redirect to login
-      // window.location.href = "/login";
-    }
-    return Promise.reject(error);
-  }
+  (err) => Promise.reject(err)
 );
 
 export default axiosInstance;
+

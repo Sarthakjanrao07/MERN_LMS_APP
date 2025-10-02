@@ -9,9 +9,9 @@ function LandingPage() {
   const navigate = useNavigate();
   const [publicCourses, setPublicCourses] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [isPageReady, setIsPageReady] = useState(false);
   const [apiError, setApiError] = useState(null);
   const [loadingProgress, setLoadingProgress] = useState(0);
+  const [pageContentReady, setPageContentReady] = useState(false);
 
   useEffect(() => {
     // Simulate loading progress
@@ -23,12 +23,14 @@ function LandingPage() {
         }
         return prev + 10;
       });
-    }, 200);
+    }, 150);
 
-    // Set a timeout to ensure the loading screen appears for a minimum time
-    const loadingTimer = setTimeout(() => {
-      setIsLoading(true);
-    }, 100);
+    // Preload the banner image
+    const bannerImg = new Image();
+    bannerImg.src = banner;
+    bannerImg.onload = () => {
+      console.log("Banner image preloaded");
+    };
 
     // Fetch courses data
     const fetchCourses = async () => {
@@ -72,11 +74,10 @@ function LandingPage() {
           ]);
         }
       } finally {
-        // Clear the loading timer and set page as ready
-        clearTimeout(loadingTimer);
-        setIsPageReady(true);
+        // Mark page content as ready
+        setPageContentReady(true);
         
-        // Ensure minimum loading time of 2 seconds for better UX
+        // Ensure loading screen shows for at least 2 seconds
         setTimeout(() => {
           setIsLoading(false);
           clearInterval(progressInterval);
@@ -85,11 +86,11 @@ function LandingPage() {
       }
     };
     
+    // Start fetching immediately
     fetchCourses();
 
     // Cleanup function
     return () => {
-      clearTimeout(loadingTimer);
       clearInterval(progressInterval);
     };
   }, []);
@@ -104,7 +105,7 @@ function LandingPage() {
     navigate(`/course/details/${courseId}`);
   };
 
-  // Enhanced loading screen component with progress bar
+  // Loading screen component - shows immediately
   if (isLoading) {
     return (
       <div className="min-h-screen bg-white flex flex-col items-center justify-center">
@@ -130,6 +131,7 @@ function LandingPage() {
     );
   }
 
+  // Main page content - rendered in background while loading screen is visible
   return (
     <div className="min-h-screen bg-white">
       {/* Navbar */}

@@ -48,10 +48,20 @@ git clone https://github.com/Sarthakjanrao07/MERN_LMS_APP.git
 cd server
 npm install
 
-
-cd ../client
-npm install
-
 MONGO_URI=<Your MongoDB connection string>
 JWT_SECRET=<Your JWT secret key>
 PORT=5000
+
+Run the application
+
+Backend:
+
+cd server
+npm run dev
+
+
+Frontend:
+
+cd client
+npm start
+

@@ -45,3 +45,5 @@ Although built in **React for web**, the architecture and **component-based desi
 ```bash
 git clone https://github.com/Sarthakjanrao07/MERN_LMS_APP.git
 
+cd server
+npm install

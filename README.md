@@ -47,3 +47,8 @@ git clone https://github.com/Sarthakjanrao07/MERN_LMS_APP.git
 
 cd server
 npm install
+
+
+cd ../client
+npm install
+

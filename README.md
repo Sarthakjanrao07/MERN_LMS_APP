@@ -52,3 +52,6 @@ npm install
 cd ../client
 npm install
 
+MONGO_URI=<Your MongoDB connection string>
+JWT_SECRET=<Your JWT secret key>
+PORT=5000

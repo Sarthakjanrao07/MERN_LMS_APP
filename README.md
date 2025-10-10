@@ -31,7 +31,7 @@ Although built in **React for web**, the architecture and **component-based desi
 
 **Frontend:** React.js, React Router DOM, Axios, Tailwind CSS  
 **Backend:** Node.js, Express.js, MongoDB & Mongoose, JWT Authentication  
-**Deployment:** Frontend: Vercel | Backend: Render | Database: MongoDB Atlas
+**Deployment:** Frontend: Netlify | Backend: Render | Database: MongoDB Atlas
 
 ---
 

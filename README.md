@@ -67,7 +67,7 @@ npm start
 
 ```
 
-git init
+git init ---
 git add .
 git commit -m "Initial polished submission with README, screenshots, GIF"
 git branch -M main

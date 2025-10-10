@@ -37,3 +37,11 @@ Although built in **React for web**, the architecture and **component-based desi
 
 ## Folder Structure
 
+---
+
+## Installation
+
+1. **Clone the repository**
+```bash
+git clone https://github.com/Sarthakjanrao07/MERN_LMS_APP.git
+

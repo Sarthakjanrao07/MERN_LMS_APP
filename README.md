@@ -1,4 +1,4 @@
-Deploy link: [https://playful-tapioca-b4b995.netlify.app/](https://arthikgurukul.netlify.app/)
+Deploy link: [Learning Management System](https://arthikgurukul.netlify.app/)
 
 # MERN Learning Management System (LMS) https://www.loom.com/share/a02bc039ce26408c98a0098bbcf82e3c?sid=058d43b5-d562-4c26-a805-ff76bbb7a5ad
 
